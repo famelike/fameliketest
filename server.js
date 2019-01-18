@@ -1,19 +1,10 @@
-const nodemon = require('nodemon');
-const path = require('path');
+var express = require("express");
 
-nodemon({
-  execMap: {
-    js: 'node'
-  },
-  script: path.join(__dirname, 'server/server'),
-  ignore: [],
-  watch: process.env.NODE_ENV !== 'production' ? ['server/*'] : false,
-  ext: 'js'
-})
-.on('restart', function() {
-  console.log('Server restarted!');
-})
-.once('exit', function () {
-  console.log('Shutting down server');
-  process.exit();
+var app = express();
+
+app.get("/", function(req, res) {
+  res.send("Hi Cyan!!!");
 });
+app.listen(8080, "127.0.0.1", function() {});
+
+module.exports = app;
